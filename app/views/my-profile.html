@@ -1,0 +1,71 @@
+<div class="shell-wrapper profile my-profile sun" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c">
+
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'"></div>
+            <!-- End menu button -->
+            
+            <div class="user" data-ng-class="{'top-1': userData.position == 1,'top-10': userData.position <= 10}">
+                <div class="avatar" ng-style="{'background-color': userData.avatar_bg}">
+                    <img class="img" data-ng-src="{{userData.avatar}}" alt="">
+                </div>
+                <ng-include src="'/views/avatar_stripe.html'"></ng-include>
+            </div>
+            <p class="label ff-2 fs-39 color-1 bold italic ta-c">{{userData.username}}</p>
+            <ul class="stat">
+                 <li class="line">
+                    <p class="item color-1 ov-h">
+                        <span class="left fs-25 fl-l">Leaderboard position:</span>
+                        <span class="right fs-25 ff-1 bold fl-r">{{userData.position}}</span>
+                    </p>
+                </li>
+                <li class="line">
+                    <p class="item color-1 ov-h">
+                        <span class="left fs-25 fl-l">Total points earned:</span>
+                        <span class="right fs-25 ff-1 bold fl-r">{{userData.score}}</span>
+                    </p>
+                </li>
+                <li class="line">
+                    <p class="item color-1 ov-h">
+                        <span class="left fs-25 fl-l">Total games played:</span>
+                        <span class="right fs-25 ff-1 bold fl-r">{{userData.games_count}}</span>
+                    </p>
+                </li>
+                <li class="line">
+                    <p class="item color-1 ov-h">
+                        <span class="left fs-25 fl-l">Win ratio:</span>
+                        <span class="right fs-25 ff-1 bold fl-r">{{userData.win_ratio}}%</span>
+                    </p>
+                </li>
+            </ul>
+            <p class="label-2 ff-2 fs-30 color-1 bold italic ta-c">{{userData.achievements.length}} of {{achievements.length}} badges earned!</p>
+            <ul class="list-1 ta-c">
+                <li class="item" data-ng-repeat="achievement in achievements">
+                    <div ng-if="achievement.active">
+                        <div class="case">
+                            <div class="img-wrapper">
+                                <img class="img" data-ng-src="/static/images/{{achievement.icon}}" alt=""/>
+                            </div>
+                            <p class="label ta-c fs-20 color-3 ff-1 bold">{{achievement.title}}</p>
+                        </div>
+                    </div>
+                    <div ng-if="!achievement.active">
+                        <div class="case">
+                            <div class="img-wrapper">
+                                <img class="img" data-ng-src="/static/images/{{achievement.icon_inactive}}" alt=""/>
+                            </div>
+                            <p class="label ta-c fs-20 color-19 ff-1 bold">{{achievement.title}}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

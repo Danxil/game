@@ -1,0 +1,34 @@
+<div class="shell-wrapper invite-friends sky" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c">
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'"></div>
+            <!-- End menu button -->
+            <p class="label ff-2 fs-39 color-1 bold italic">Invite colleagues, earn points</p>
+            <p class="text fs-32 color-1">
+                Earn <span class="ff-1 bold">500 points</span> for every colleague you recruit to play!
+            </p>
+            <div class="social">
+                <ul class="list">
+                    <li class="item" data-ng-repeat="social in SOCIALS" >
+                        <a class="link" data-ng-class="{active: selectedSocial == social}" data-ng-click="chooseSocial(social)">
+                            <img class="img" data-ng-src="{{selectedSocial == social && '/images/' + social + '-3.png' || '/images/' + social + '-2.png'}}">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <textarea readonly class="sharing-text ff-1 input fs-32 color-4" data-ng-model="shareText"></textarea>
+            <div class="button-wrapper">
+                <a class="button ff-1 fs-39 bold color-1 ta-c" hover="">
+                    <span class="content" data-ng-click="sharing()">Send</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="shell-wrapper game-process priority sky" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c" data-ng-class="{finish: finishGameObj, 'show-result': animateSortedActive || correctAnswer.my}">
+            <div class="progress-bar-wrapper">
+                <div class="progress-bar">
+                    <div class="item left ta-l">
+                        <div class="fixed">
+                            <div class="img-wrapper" ng-style="{'background-color': userData.avatar_bg}">
+                                <img class="img" data-ng-src="{{userData.avatar}}">
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="item back"></div>
+                            <div class="item bg-wrapper">
+                                <div class="item flash correct" data-ng-show="correctAnswer.my === true"></div>
+                                <div class="item flash incorrect" data-ng-show="correctAnswer.my === false"></div>
+                                <div class="item bg" data-ng-style="{right: progress.time.my + '%'}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item right ta-r">
+                        <div class="fixed">
+                            <div class="img-wrapper" ng-style="{'background-color': opponent.avatar_bg}">
+                                <img class="img" data-ng-src="{{opponent.avatar}}">
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="item back"></div>
+                            <div class="item bg-wrapper">
+                                <div class="item flash correct" data-ng-show="correctAnswer.opponent === true"></div>
+                                <div class="item flash incorrect" data-ng-show="correctAnswer.opponent === false"></div>
+                                <div class="item bg" data-ng-style="{left: progress.time.opponent + '%'}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-block" data-ng-hide="strikeScreenShow">
+                <p class="question fs-40 color-1">{{gameData.question.title}}</p>
+                <p class="got-it-text fs-22 ff-1 bold color-13">
+                    <span data-ng-hide="animateSortedActive">You got it!</span>
+                    <span data-ng-show="animateSortedActive">The correct order is:</span>
+                </p>
+                <ul class="answers-list sorted" data-as-sortable="sortableCtrl" data-is-disabled="correctAnswer.my === false" data-ng-model="answers" data-animate-sorted="order" data-animate-sorted-ctrl="animateSortedCtrl" data-animate-sorted-active="animateSortedActive">
+                    <li class="item" data-as-sortable-item="" data-ng-repeat="answer in answers" data-animate-sorted-item-order="{{answer.order}}">
+                        <a class="answer sortable button ff-1 fs-30 bold color-1 ta-c" data-ng-class="{correct: correctSortedHilight === true}" as-sortable-item-handle="">
+                            <div class="left">
+                            </div>
+                            <span class="content">{{answer.text}}</span>
+                            <div class="right">
+                                <b class="hamburger"></b>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <a class="button submit inline ff-1 fs-30 bold color-1 ta-c" data-ng-click="checkAnswer(answers, 'my');" data-ng-class="{hide: animateSortedActive || correctSortedHilight}">
+                    <div class="left"></div>
+                    <span class="content">Submit</span>
+                    <div class="right"></div>
+                </a>
+            </div>
+            <div class="strikes-block" data-ng-show="strikeScreenShow">
+                <p class="title ff-2 lh-2 fs-58 bold italic color-1">Strike {{numberStrike.my + 1}}</p>
+                <ul class="strikes">
+                    <li class="item" data-ng-repeat="item in STRIKES_COUNT | fixedNumber">
+                        <div class="strike" data-ng-class="{fail: $index <= numberStrike.my}">
+                            <img class="img" src="../images/close.png" alt=""/>
+                        </div>
+                    </li>
+                </ul>
+                <p class="text fs-39 color-1">There are still {{incorrectItemsCount.my}} items out of their proper order.</p>
+                <a class="submit button ff-1 fs-30 bold color-1 ta-c" data-ng-click="toNextStrike('my')">
+                    <span class="content">Try again</span>
+                </a>
+            </div>
+            <div class="timer-wrapper">
+                <img class="img" data-ng-src="{{choosenGame.icon}}" alt=""/>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+    </div>
+</div>

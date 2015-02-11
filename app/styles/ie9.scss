@@ -1,0 +1,136 @@
+.main {
+
+  &:before {
+    display: block;
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 1024px;
+    box-shadow: 4px -2px 7px 0px rgba(3, 3, 3, 0.7);
+  }
+
+  .wrapper .shell-wrapper.note .shell-1 {
+    background-color: #fff;
+  }
+
+  .wrapper .shell-wrapper.registration .shell-1 > .content .main-form .line .avatar-choose .list {
+    cursor: default !important;
+  }
+
+  .wrapper {
+
+    @media screen and (min-width: 769px) {
+
+      &.app {
+        .shell-wrapper {
+
+          &.sky {
+            .shell-1 .second-bg {
+              display: none;
+            }
+          }
+          
+          .shell-1 {
+            background: #1198DB;
+            box-shadow: none;
+            position: static;
+
+            &:before {
+              display: none;
+            }
+
+            .landscape-line {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+
+              &:before {
+                position: absolute;
+                border-left: 3px solid #fff;
+                content: '';
+                display: block;
+                box-shadow: inset 10px 0px 10px -4px rgba(50, 50, 50, 0.75);
+                top: 0;
+                bottom: 0;
+                width: 25px;
+                z-index: 99999;
+              }
+            }
+          }
+        }
+      }
+
+      &.separator {
+        display: none;
+      }
+
+      &.panel {
+        position: static;
+        overflow: visible;
+      }
+
+      .shell-wrapper .shell-1 {
+        background: #1198DB;
+        box-shadow: none;
+      }
+
+      .shell-wrapper .shell-2 {
+        background: none;
+
+        > b.menu-bg {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          max-width: 1024px;
+          width: 100%;
+          z-index: -5;
+
+          &:before {
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: #333;
+            z-index: -5;
+            content: '';
+            width: 0;
+            transition: width .5s;
+          }
+        }
+      }
+
+      .shell-wrapper.menu-active .shell-2 {
+        > b.menu-bg {
+          &:before {
+            width: 235px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.view-animate.ng-leave {
+  -webkit-transition: opacity 0s;
+  transition: opacity 0s;
+}
+
+.view-animate.ng-enter {
+  -webkit-transition: opacity 0s;
+  transition: opacity 0s;
+}
+
+.view-animate-2.ng-leave {
+  -webkit-transition: opacity 0s;
+  transition: opacity 0s;
+}
+
+.view-animate-2.ng-enter {
+  -webkit-transition: opacity 0s;
+  transition: opacity 0s;
+}

@@ -1,0 +1,70 @@
+<div class="shell-wrapper pending-challenges sky" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c">
+
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'"></div>
+            <!-- End menu button -->
+
+            <p class="label ff-2 fs-39 color-1 bold italic ta-c">Challenges</p>
+            <p class="text fs-32 color-1 ta-c">
+                Here’s your chance to go head to head. Accept challenges received and view results of sent challenges.
+            </p>
+            <ul class="tabs ta-c">
+                <li class="item">
+                    <a class="link fs-24 ff-1 color-9" data-ng-class="{active: selectedList == 0}" data-ng-click="chooseList(0);">Received</a>
+                </li>
+                <li class="item">
+                    <a class="link fs-24 ff-1 color-9" data-ng-class="{active: selectedList == 1}" data-ng-click="chooseList(1);">Sent</a>
+                </li>
+            </ul>
+            <ul class="list" data-infinite-scroll="moreChallenges();">
+                <li class="item repeat-animate" data-ng-repeat="challenge in challenges" data-ng-class="{bg: $index % 2 != 0}">
+                    <div class="content">
+                        <div class="user" data-ng-class="{'top-1': (selectedList == 0 && challenge.challenger_position == 1) || (selectedList == 1 && challenge.challenged_position == 1), 'top-3': (selectedList == 0 && challenge.challenger_position <= 3) || (selectedList == 1 && challenge.challenged_position <= 3),'top-10': (selectedList == 0 && challenge.challenger_position <= 10) || (selectedList == 1 && challenge.challenged_position <= 10)}">
+                            <div class="avatar" ng-style="{'background-color': selectedList == 0 && challenge.challenger_avatar_bg || challenge.challenged_avatar_bg}">
+                                <img class="img" data-ng-src="{{selectedList == 0 && challenge.challenger_image || challenge.challenged_avatar}}" alt="">
+                            </div>
+                            <div class="status-line type-2" data-ng-show="challenge.challenger_line_label">
+                                <span class="tape left"></span>
+                                <div class="line">
+                                    <img class="star" src="../images/star.png" alt="">
+                                    <img class="star" src="../images/star.png" alt="">
+                                    <span class="value fs-22 bold color-1 ff-1">{{challenge.challenger_line_label}}</span>
+                                    <img class="star" src="../images/star.png" alt="">
+                                    <img class="star" src="../images/star.png" alt="">
+                                </div>
+                                <span class="tape right"></span>
+                            </div>
+                        </div>
+                        <div class="text-block ta-l" data-ng-show="selectedList == 0">
+                            <ng-pluralize count="challenge.days_left + 1" when="{'1': '1 day left', 'other': '{} days left'}" class="title color-3 fs-20 ff-1 bold"></ng-pluralize><br>
+                            <p class="text color-1 fs-25">{{challenge.challenger_name}} challenges you to <span class="ff-1 bold">{{challenge.game_title}}</span> for {{challenge.game_points}} points.</p>
+                        </div>
+                        <div class="text-block ta-l" data-ng-show="selectedList == 1">
+                            <p class="title color-3 fs-20 ff-1 bold" data-ng-show="challenge.active == false && challenge.won == true">
+                                <span class="circle-hint success" ></span> YOU WON!
+                            </p>
+                            <p class="title color-3 fs-20 ff-1 bold" data-ng-show="challenge.active == false && challenge.won == false">
+                                <span class="circle-hint failure"></span> YOU LOST
+                            </p>
+                            <ng-pluralize count="challenge.days_left + 1" when="{'1': '1 day left', 'other': '{} days left'}" class="title color-3 fs-20 ff-1 bold" data-ng-show="challenge.active == true"></ng-pluralize><br>
+                            <p class="text color-1 fs-25"><span class="ff-1 bold">{{challenge.game_title}}</span> for {{challenge.game_points}} points against {{challenge.challenged_name}}.</p>
+                        </div>
+                    </div>
+                    <div class="button-wrapper" data-ng-show="selectedList == 0">
+                        <a class="submit button ff-1 fs-39 bold color-1 ta-c" data-ng-class="{disabled: gameProcess}" data-ng-click="acceptChallenge(challenge)">
+                            <span class="content">Accept challenge</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

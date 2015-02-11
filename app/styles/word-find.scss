@@ -1,0 +1,21 @@
+.wf-matrix {
+  position: relative;
+}
+
+.wf-touch-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: none;
+  touch-action: none;
+  -ms-touch-action: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .wf-touch-block {
+    display: block;
+  }
+}

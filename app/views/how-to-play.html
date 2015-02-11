@@ -1,0 +1,43 @@
+<div class="shell-wrapper how-to-play sky" data-ng-class="{main: !showMenu}" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content">
+            <div class="close-wrapper" data-ng-if="showMenu === false">
+                <a class="close fs-25 color-9" href="" data-ng-click="goToChooseCategory()">Close <span class="icon bold fs-35">&#10006;</span></a>
+            </div>
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'" ng-if="showMenu == true"></div>
+            <!-- End menu button -->
+            <p class="label ff-2 fs-33 color-1 bold italic ta-c">How to play</p>
+            <div class="input-wrapper" data-ng-class="{'hidden-menu': !showMenu}">
+                <select data-chosen data-ng-model="selectedType" data-ng-options="key for (key , value) in options" data-ng-change="changeType(selectedType)" data-placeholder="Select Your Job Function">
+                    <!--<option chosen-update="{{$last}}" data-ng-repeat="option in options" value="{{$index}}">{{$index}}</option>-->
+                </select>
+            </div>
+            <div data-ng-repeat="(name, items) in howtoData" data-ng-show="name==selectedType">
+                <div class="swiper-container" data-slider="howToPlay" data-slider-name="{{ name }}">
+                    <div class="swiper-wrapper">
+                        <div class="slide swiper-slide repeat-animate" data-ng-repeat="item in items">
+                            <h1 class="title fs-30 ff-1  bold color-4">{{$index + 1}}. {{item.title}}</h1>
+                            <div class="text color-1 fs-30" data-ng-bind-html="item.text"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation ta-c show-animate" data-ng-class="{'not-show': items.length <= 1}">
+                    <a class="arrow left">
+                        <img class="" data-ng-src="{{showMenu == true && '../images/arrow-l-wh.png' || '../images/arrow-l.png'}}" alt="" />
+                    </a>
+                    <div class="swiper-pagination"></div>
+                    <a class="arrow right">
+                        <img class="" data-ng-src="{{showMenu == true && '../images/arrow-r-wh.png' || '../images/arrow-r.png'}}" alt="" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content" ng-if="showMenu == true">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

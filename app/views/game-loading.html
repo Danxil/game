@@ -1,0 +1,22 @@
+<div class="shell-wrapper game-loading sky" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c" data-ng-class="{enabled: gameData && opponent, 'no-first': !choosenGame.first_play || !visualInstruction}">
+            <div class="loading">
+                <p class="label ff-2 fs-33 color-1 bold italic ta-c">{{title}}</p>
+                <div class="img-wrapper">
+                    <img class="loader" src="../images/loader.gif" alt=""/>
+                    <img class="img" data-ng-src="{{choosenGame.icon}}" alt=""/>
+                </div>
+                <img class="visual-instruction" data-ng-src="{{visualInstruction}}" alt=""/>
+                <p class="text fs-25 color-1" ng-if="message">Once you've finished the game your opponent will try and beat your score and time.</p>
+            </div>
+            <div class="countdown">
+                <p class="label ff-2 fs-33 color-1 bold italic ta-c">{{title}}</p>
+                <p class="counter ff-2 fs-150 color-1 medium italic ta-c" data-ng-class="{animation: counter}">{{counter}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+    </div>
+</div>

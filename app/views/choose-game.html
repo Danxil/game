@@ -1,0 +1,46 @@
+<div class="shell-wrapper choose-game sky" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content">
+            <div class="control-panel">
+                <a class="back fl-l" href="" data-ng-click="goToChooseCategory();">
+                    <img class="img" src="../images/back.png" alt="">
+                </a>
+
+                <!-- Right menu button -->
+                <span ng-include="'/views/menu-button.html'"></span>
+                <!-- End menu button -->
+
+            </div>
+            <p class="label ff-2 fs-33 color-1 bold italic ta-c">Great. Now select a game to play.</p>
+            <ul class="list">
+                <li class="item"  data-ng-repeat="game in games">
+                    <a class="button color-1 bold ff-1" data-ng-class="{disabled: !game.unlocked}" data-ng-click="chooseGame(game);" href="">
+                        <div class="left">
+                            <div class="pts-wrapper">
+                                <span data-ng-class="'pts ff-1 fs-20 color-1 ws-nw length-' + (game.points + '').length">
+                                    <span class="ff-1 bold">{{game.points}}</span>
+                                     pts
+                                </span>
+                            </div>
+                        </div>
+                        <span class="content ta-l fs-28">
+                            {{game.title}}
+                            <br />
+                            <span class="fs-20"> {{ game.game_type_name }}</span>
+                        </span>
+
+                        <div class="right">
+                            <img class="img" data-ng-src="{{game.icon}}" alt="">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<li class="item">
+    <a class="link" data-ng-class="{active: $state.includes('root.app.game')}" href="">
+        <span class="text ff-1 color-2 fs-30 underline-none" data-ng-click="newGame()">Play new game</span>
+    </a>
+</li>
+<li class="item">
+    <a class="link" data-ng-class="{active: $state.includes('root.' + $stateTarget() + '.my-profile')}" href="">
+        <span class="text ff-1 color-2 fs-30 underline-none" data-ng-click="goToMyProfile()"><span>My Profile</span><span class="hint color-1 fs-20" data-ng-show="profileCount > 0">{{profileCount}}</span></span>
+    </a>
+</li>
+<li class="item">
+    <a class="link" data-ng-class="{active: $state.includes('root.' + $stateTarget() + '.pending-challenges')}" href="">
+        <span class="text ff-1 color-2 fs-30 underline-none" data-ng-click="goToPendingChallenges()" data-ie-content-height><span>Challenges</span><span class="hint color-1 fs-20" data-ng-show="pedingChallengesCount > 0">{{pedingChallengesCount}}</span></span>
+    </a>
+</li>
+<li class="item">
+    <a class="link" data-ng-class="{active: $state.includes('root.' + $stateTarget() + '.leaderboard')}" href="">
+        <span class="text ff-1 color-2 fs-30 underline-none" data-ng-click="goToLeaderboard()" data-ie-content-height><span>Leaderboard</span><span class="hint color-1 fs-20" data-ng-show="leaderBoardChanged > 0">{{leaderBoardChanged}}</span></span>
+    </a>
+</li>
+<li class="item">
+    <a class="link" data-ng-class="{active: $state.includes('root.' + $stateTarget() + '.invite-friends')}" href="">
+        <span class="text ff-1 color-2 fs-30 underline-none" data-ng-click="goToInviteFriends()">Invite Colleagues</span>
+    </a>
+</li>
+<li class="item">
+    <a class="link" data-ng-class="{active: $state.includes('root.'+ $stateTarget() +'.how-to-play')}" href="">
+        <span class="text ff-1 color-2 fs-30 underline-none" data-ng-click="goToHowToPlay()">Instructions</span>
+    </a>
+</li>
+<li class="item">
+    <a class="link" data-ng-class="{active: $location.$$path == '/' + $stateTarget() + '/note/legal'}" href="">
+        <span class="text ff-1 color-2 fs-30 underline-none" data-ng-click="goToNote('legal')">Legal</span>
+    </a>
+</li>

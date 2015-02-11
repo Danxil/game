@@ -1,0 +1,37 @@
+<div class="shell-wrapper invalid-opponent" data-scroll-top data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c">
+            <div class="control-panel">
+                <a class="back fl-l" href="" data-ng-click="backHistory();">
+                    <img class="img" src="../images/back.png" alt="">
+                </a>
+                <div class="clear"></div>
+            </div>
+            <p class="label ff-2 fs-58 color-1 bold italic ta-c">We're sorry</p>
+            <div class="img-wrapper">
+                <div class="avatar" ng-style="{'background-color': invalidOpponent.avatar_bg}">
+                    <img class="img" data-ng-src="{{invalidOpponent.avatar}}" alt="">
+                </div>
+            </div>
+            <p class="text fs-33 color-1" data-ng-if="userData.pk != invalidOpponent.pk && !invalidOpponentGameName">
+                <span class="ff-1 bold">{{invalidOpponent.username}}</span> can't be challenged to that game, they haven't unlocked it yet.
+            </p>
+            <p class="text fs-33 color-1" data-ng-if="userData.pk == invalidOpponent.pk">
+                We’re sorry. You cannot challenge yourself to a game.
+            </p>
+            <p class="text fs-33 color-1" data-ng-if="userData.pk != invalidOpponent.pk && invalidOpponentGameName">
+                You cannot challenge <span class="ff-1 bold">{{invalidOpponent.username}}</span> to that game. You have already challenged them to <span class="ff-1 bold">{{ invalidOpponentGameName }}</span>.
+            </p>
+            <div class="button-wrapper">
+                <a class="submit button ff-1 fs-39 bold color-1 ta-c" data-ng-class="{disabled: registrationData.error}" data-ng-click="goToChooseOpponent();">
+                    <span class="content">Choose another opponent</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="shell-wrapper game-lose-2 finish-game" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c">
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'"></div>
+            <!-- End menu button -->
+            <p class="label ff-2 fs-58 color-1 bold italic ta-c">That’s ok</p>
+            <p class="title fs-33 color-1">You’ll do better next time.</p>
+            <div class="img-wrapper">
+                <div class="avatar" ng-style="{'background-color': userData.avatar_bg}">
+                    <img class="img" data-ng-src="{{userData.avatar}}" alt="">
+                </div>
+            </div>
+            <p class="text fs-33 color-1">
+                This will help get you up to speed:
+                <a class="color-2 ff-1 bold" href="{{ asset_link }}" target="_blank">{{ asset_title }}</a>
+            </p>
+            <p class="text-2 fs-25 color-1">Or you can:</p>
+            <div class="button-wrapper">
+                <a class="submit button ff-1 fs-39 bold color-1 ta-c" data-ng-class="{disabled: registrationData.error}" data-ng-click="goToChooseCategory()">
+                    <span class="content">Play a new game</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

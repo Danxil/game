@@ -1,0 +1,77 @@
+<div class="shell-wrapper game-process word sky" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c" data-ng-class="{finish: finishGameObj}">
+            <div class="progress-bar-wrapper">
+                <div class="progress-bar">
+                    <div class="item left ta-l">
+                        <div class="fixed">
+                            <div class="img-wrapper" ng-style="{'background-color': userData.avatar_bg}">
+                                <img class="img" data-ng-src="{{userData.avatar}}">
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="item back"></div>
+                            <div class="item bg-wrapper">
+                                <div class="item flash correct" data-ng-show="correctAnswer.my === true"></div>
+                                <div class="item flash incorrect" data-ng-show="correctAnswer.my === false"></div>
+                                <div class="item progress" data-ng-style="{right: progress.answers.my + '%'}"></div>
+                                <div class="item bg" data-ng-style="{right: progress.time.my + '%'}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item right ta-r">
+                        <div class="fixed">
+                            <div class="img-wrapper" ng-style="{'background-color': opponent.avatar_bg}">
+                                <img class="img" data-ng-src="{{opponent.avatar}}">
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="item back"></div>
+                            <div class="item bg-wrapper">
+                                <div class="item flash correct" data-ng-show="correctAnswer.opponent === true"></div>
+                                <div class="item flash incorrect" data-ng-show="correctAnswer.opponent === false"></div>
+                                <div class="item progress" data-ng-style="{left: progress.answers.opponent + '%'}"></div>
+                                <div class="item bg" data-ng-style="{left: progress.time.opponent + '%'}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="question fs-40 color-1">{{gameData.question.title}}</p>
+            <div class="answers-list" data-word-find="wordFindCtrl" data-wf-disable="wfDisable">
+                <div class="row" data-ng-repeat="row in gameData.question.matrix" data-word-find-row>
+                    <div class="item" data-ng-repeat="item in row track by $index" data-word-find-item>
+                        <a class="answer ta-c" data-ng-class="{'last': correctIndexes[$parent.$parent.$parent.$index][$index].position.last,
+                                                                'fade-last': errorIndexes[$parent.$parent.$parent.$index][$index].position.last,
+                                                                'first': correctIndexes[$parent.$parent.$parent.$index][$index].position.first,
+                                                                'fade-first': errorIndexes[$parent.$parent.$parent.$index][$index].position.first,
+                                                                'left': correctIndexes[$parent.$parent.$parent.$index][$index].position.left,
+                                                                'right': correctIndexes[$parent.$parent.$parent.$index][$index].position.right,
+                                                                'horisontal': correctIndexes[$parent.$parent.$parent.$index][$index].type == 'horisontal',
+                                                                'fade-horisontal': errorIndexes[$parent.$parent.$parent.$index][$index].type == 'horisontal',
+                                                                'vertical': correctIndexes[$parent.$parent.$parent.$index][$index].type == 'vertical',
+                                                                'fade-vertical': errorIndexes[$parent.$parent.$parent.$index][$index].type == 'vertical',
+                                                                'diagonal': correctIndexes[$parent.$parent.$parent.$index][$index].type == 'diagonal',
+                                                                'fade-diagonal': errorIndexes[$parent.$parent.$parent.$index][$index].type == 'diagonal',
+                                                                'correct': correctIndexes[$parent.$parent.$parent.$index][$index],
+                                                                'fade': errorIndexes[$parent.$parent.$parent.$index][$index]}"
+                           data-word-find-handler data-wf-value="{{item}}">
+                            <b class="wf-over"></b>
+                            <b class="wf-diagonal-over"></b>
+                            <b class="fade-over"></b>
+                            <b class="correct-over"></b>
+                            <b class="diagonal-correct-over"></b>
+                            <span class="text ff-1 fs-30 bold color-1">{{item}}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-wrapper">
+                <img class="img" data-ng-src="{{choosenGame.icon}}" alt=""/>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+    </div>
+</div>

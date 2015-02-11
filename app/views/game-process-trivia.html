@@ -1,0 +1,65 @@
+<div class="shell-wrapper game-process trivia sky" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c">
+            <div class="progress-bar-wrapper">
+                <div class="progress-bar">
+                    <div class="item left ta-l">
+                        <div class="fixed">
+                            <div class="img-wrapper" ng-style="{'background-color': userData.avatar_bg}">
+                                <img class="img" data-ng-src="{{userData.avatar}}">
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="item back"></div>
+                            <div class="item bg-wrapper">
+                                <div class="item flash correct" data-ng-show="correctAnswer.my === true"></div>
+                                <div class="item flash incorrect" data-ng-show="correctAnswer.my === false"></div>
+                                <div class="item progress" data-ng-style="{right: progress.answers.my + '%'}"></div>
+                                <div class="item bg" data-ng-style="{right: progress.time.my + '%'}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item right ta-r">
+                        <div class="fixed">
+                            <div class="img-wrapper" ng-style="{'background-color': opponent.avatar_bg}">
+                                <img class="img" data-ng-src="{{opponent.avatar}}">
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="item back"></div>
+                            <div class="item bg-wrapper">
+                                <div class="item flash correct" data-ng-show="correctAnswer.opponent === true"></div>
+                                <div class="item flash incorrect" data-ng-show="correctAnswer.opponent === false"></div>
+                                <div class="item progress" data-ng-style="{left: progress.answers.opponent + '%'}"></div>
+                                <div class="item bg" data-ng-style="{left: progress.time.opponent + '%'}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="question-number fs-22 ff-1 bold color-13">{{indexQuestion.my + 1}} of {{gameData.length}}</p>
+            <p class="question fs-40 color-1" data-ng-bind-html="question.title"></p>
+            <ul class="answers-list">
+                <li class="item" data-ng-repeat="answer in question.answers">
+                    <a class="answer submit button ff-1 fs-30 bold color-1 ta-c" data-ng-class="{correct: correctAnswer.my !== undefined && answer.correct, incorrect: correctAnswer.my !== undefined && !answer.correct, hide: (correctAnswer.my || timeOver.my) && !answer.correct}" data-ng-click="checkAnswer(answer.id, 'my');">
+                        <div class="left">
+                            <img class="img" data-ng-src="{{answer.correct && '../images/ok.png' || '../images/close.png'}}" alt=""/>
+                        </div>
+                        <span class="content" data-ng-bind-html="answer.text"></span>
+                        <div class="right"></div>
+                    </a>
+                </li>
+            </ul>
+            <div class="timer-wrapper">
+                <div class="show-animate" data-ng-hide="pause.my">
+                    <span class="timer bold fs-24 ff-1 color-1">{{timeLeft.my}}</span>
+                    <img class="loader loader-animate show-animate" src="../images/loader.png" alt=""/>
+                </div>
+                <img class="img" data-ng-src="{{choosenGame.icon}}" alt=""/>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+    </div>
+</div>

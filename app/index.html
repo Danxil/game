@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]>    <html data-ng-app="app" class="ie9" data-check-stock-android> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html data-ng-app="app" data-check-stock-android> <!--<![endif]-->
+<head>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Great Mobile Challenge</title>
+    <!-- build:css(.tmp) css/style.min.css -->
+    <link type="text/css" href="styles/style.css" rel="stylesheet">
+    <link type="text/css" href="styles/ie.css" rel="stylesheet">
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) css/ie9.min.css -->
+    <!--[if lte IE 10]>
+    <link type="text/css" href="styles/ie9.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+    <![endif]-->
+    <!-- endbuild -->
+
+    <link rel="icon" href="favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="favicon-152.png">
+    <meta name="msapplication-TileColor" content="#eee">
+    <meta name="msapplication-TileImage" content="favicon-144.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body data-ng-controller="firstLoadCtrl" data-window-resize devices-hover logout-before-leave>
+<div class="main" data-landscape data-fixed-elem=".wrapper.panel" data-target-elem=".wrapper.app" data-main-elem=".main">
+    <div class="wrapper app" ui-view="left"></div>
+    <div class="wrapper separator">
+        <div class="line-wrapper">
+            <b class="line"></b>
+        </div>
+    </div>
+    <div class="wrapper panel" ui-view="right"></div>
+</div>
+
+<div class="overlay hide" data-ng-show="offline" id="overlay" data-ng-class="{dark: afterGame}">
+    <div class="message-container">
+        <img src="../images/no-connection.png" />
+        <p class="ff-1 lh-2 fs-63 bold color-1">Searching for connection</p>
+        <div class="loading">
+            <span class="first"></span>
+            <span class="second"></span>
+            <span class="third"></span>
+            <span class="fourth"></span>
+        </div>
+        <p class="main-text ff-1 fs-48 color-1">{{ offlineMessage }}</p>
+    </div>
+</div>
+
+<!-- build:js(.tmp) js/app.js -->
+<script src="scripts/app/config.js" type="text/javascript"></script>
+<script src="scripts/bower.js" type="text/javascript"></script>
+<script src="scripts/utils.js" type="text/javascript"></script>
+<script src="scripts/app.js" type="text/javascript"></script>
+<script src="scripts/services.js" type="text/javascript"></script>
+<script src="scripts/controllers/FirstLoadController.js" type="text/javascript"></script>
+<script src="scripts/controllers/BaseController.js" type="text/javascript"></script>
+<script src="scripts/controllers/MainController.js" type="text/javascript"></script>
+<script src="scripts/controllers/RegistrationController.js" type="text/javascript"></script>
+<script src="scripts/controllers/HowtoPlayController.js" type="text/javascript"></script>
+<script src="scripts/controllers/NoteController.js" type="text/javascript"></script>
+<script src="scripts/controllers/ChooseCategoryController.js" type="text/javascript"></script>
+<script src="scripts/controllers/ChooseGameController.js" type="text/javascript"></script>
+<script src="scripts/controllers/GameLoadingController.js" type="text/javascript"></script>
+<script src="scripts/controllers/GameLoadingInviteGameController.js" type="text/javascript"></script>
+<script src="scripts/controllers/GameLoadingInviteChallengeController.js" type="text/javascript"></script>
+<script src="scripts/controllers/GameProcessTriviaController.js" type="text/javascript"></script>
+<script src="scripts/controllers/GameProcessPriorityController.js" type="text/javascript"></script>
+<script src="scripts/controllers/GameProcessWordController.js" type="text/javascript"></script>
+<script src="scripts/controllers/GameLoseController.js" type="text/javascript"></script>
+<script src="scripts/controllers/LeaderboardController.js" type="text/javascript"></script>
+<script src="scripts/controllers/InviteFriendsController.js" type="text/javascript"></script>
+<script src="scripts/controllers/MyProfileController.js" type="text/javascript"></script>
+<script src="scripts/controllers/OtherProfileController.js" type="text/javascript"></script>
+<script src="scripts/controllers/PendingChallengesController.js" type="text/javascript"></script>
+<script src="scripts/controllers/ChooseOpponentController.js" type="text/javascript"></script>
+<script src="scripts/filters.js" type="text/javascript"></script>
+<script src="scripts/directives.js" type="text/javascript"></script>
+<script src="scripts/constants.js" type="text/javascript"></script>
+<script src="scripts/system/word-find/word-find.js" type="text/javascript"></script>
+<script src="scripts/share.js" type="text/javascript"></script>
+<!-- endbuild -->
+
+<!-- build:js js/chosen.js -->
+<script src="scripts/system/chosen.jquery.js" type="text/javascript"></script>
+<!-- endbuild -->
+
+<input type="hidden" name="elqCustomerGUID" value=""/>
+<input type="hidden" name="elqCookieWrite" value="0"/>
+<input type="hidden" name="elqFormName" value="GreatMobileChallengeForm"/>
+<input id="lns" name="lns" type="hidden" value="" />
+
+<script type="text/javascript">
+    document.onselectstart = function() { return false; }
+</script>
+<script type="text/javascript">
+    Offline.options = {
+        // Should we check the connection status immediatly on page load.
+        checkOnLoad: false,
+
+        // Should we monitor AJAX requests to help decide if we have a connection.
+        interceptRequests: false,
+
+        // Should we automatically retest periodically when the connection is down (set to false to disable).
+        reconnect: {
+            // How many seconds should we wait before rechecking.
+            initialDelay: 3,
+
+            // How long should we wait between retries.
+            delay: 3
+        },
+
+        // Should we store and attempt to remake requests which fail while the connection is down.
+        requests: false,
+
+        // Should we show a snake game while the connection is down to keep the user entertained?
+        // It's not included in the normal build, you should bring in js/snake.js in addition to
+        // offline.min.js.
+        game: false
+    };
+
+    $(document).ready(function(){
+        $("#overlay").removeClass("hide");
+    })
+</script>
+
+
+<!-- Eloqua scripts -->
+
+<!-- LOCAL VARIABLES -->
+<script>
+    var attPage = "TGMC (+ Page name)", //NOTE: Change the value of "Page Name" for each page
+        attCampaign = "mobility-TGMC"; //NOTE: This should always stay the same for the game.
+
+</script>
+
+<!-- Atlas Click Tracking -->
+<script>
+    function trackAtlas() {
+        var fileref = document.createElement('script');
+        fileref.setAttribute("type", "text/javascript");
+        fileref.setAttribute("src", "http://view.atdmt.com/jaction/cntwir_JSPWhitepaperDownload_9/v3/ato.ORDERID/[atc1.ATTCValue/atc2.ATTCType]");
+        if (typeof fileref != "undefined") {
+            document.getElementsByTagName("head")[0].appendChild(fileref);
+        }
+    }
+</script>
+<!-- /Atlas Click Tracking -->
+
+<!-- Start Eloqua + Known/Unknonwn Scripts -->
+
+<script>
+    var oElqUserInfo = new Object();    // create the user info object
+    var elqPPS = '';
+    var elqDLKey = '';
+    var elqDLLookup = '';
+    var lookup = 0;
+    var _elqQ = _elqQ || [];
+    _elqQ.push(['elqSetSiteId', '2789']);
+    _elqQ.push(['elqTrackPageView']);
+    (function () {
+        function async_load() {
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = 'http://img.en25.com/i/elqCfg.min.js';
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        }
+
+        if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+        else if (window.attachEvent) window.attachEvent('onload', async_load);
+    })();
+
+    _elqQ.push(['elqDataLookup', escape('50e17e5451874f8e96c5d031c941fb91'), '']); //Cookie
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regexS = "[\\?&]" + name + "=([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results = regex.exec(window.location.href);
+        if (results == null) {
+            return "";
+        } else {
+            return decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    }
+
+    function emailSet() {
+        if ($('#emailAddress').val() != oElqUserInfo.email && !$("#dv_Name").is(":visible")) {
+            $('#firstName').val("").trigger('input');
+            $('#lastName').val("").trigger('input');
+            $('#company').val("").trigger('input');
+            $("#dv_Name").fadeIn("slow");
+            $("#dv_Company").fadeIn("slow");
+        }
+    }
+
+    function SetElqContent() {
+        // 2nd Lookup - Contact
+
+        if (this.GetElqContentPersonalizationValue && lookup == 1) {
+
+            oElqUserInfo.email = GetElqContentPersonalizationValue('C_EmailAddress');
+            oElqUserInfo.C_FirstName = GetElqContentPersonalizationValue('C_FirstName');
+            oElqUserInfo.C_LastName = GetElqContentPersonalizationValue('C_LastName');
+            oElqUserInfo.C_Company = GetElqContentPersonalizationValue('C_Company');
+
+
+            if (oElqUserInfo.C_FirstName.length > 0 && oElqUserInfo.C_LastName.length > 0) {
+                $("#dv_Name").fadeOut("slow", function () {
+                    $('#firstName').val(oElqUserInfo.C_FirstName).trigger('input');
+                    $('#lastName').val(oElqUserInfo.C_LastName).trigger('input');
+                });
+            }
+            if (oElqUserInfo.C_Company.length > 0) {
+                $("#dv_Company").fadeOut("slow", function () {
+                    $('#company').val(oElqUserInfo.C_Company).trigger('input');
+                });
+            }
+        }
+
+        // 1st Lookup - Visitor
+        if (this.GetElqContentPersonalizationValue && lookup == 0) {
+            var LNS0 = null;
+            LNS0 = getParameterByName('LNS');
+            $("#lns").attr('value', LNS0);
+
+            oElqUserInfo.email = GetElqContentPersonalizationValue('V_ElqEmailAddress');
+            lookup = 1;
+            getContact();
+        }
+
+    }
+
+    function getContact() {
+        _elqQ.push(['elqDataLookup', escape('55f56b56de694620b1d3a7d5978c1587'), '<C_EmailAddress>' + oElqUserInfo.email + '</C_EmailAddress>']);
+    }
+</script>
+
+<!-- End Eloqua + Known/Unknonwn Scripts -->
+
+<!-- Registration Form 3rd party tracking -->
+<script type='text/javascript'><!--//
+var timerId = null, timeout = 5;
+//--></script>
+
+<script type='text/javascript'><!--//
+function WaitUntilCustomerGUIDIsRetrieved() {
+    if (!!(timerId)) {
+        if (timeout == 0) {
+            return;
+        }
+        if (typeof this.GetElqCustomerGUID === 'function') {
+            $("#elqCustomerGUID").val(GetElqCustomerGUID());
+            return;
+        }
+        timeout -= 1;
+    }
+    timerId = setTimeout("WaitUntilCustomerGUIDIsRetrieved()", 500);
+    return;
+}
+window.onload = WaitUntilCustomerGUIDIsRetrieved;
+_elqQ.push(['elqGetCustomerGUID']);
+//--></script>
+<!-- /Registration Form 3rd party tracking -->
+
+<!-- Start Atlas Tag -->
+<script>document.write('<s' + 'cript language="JavaScript" src="https://view.atdmt.com/jaction/cntwir_ABSPSPageLoadTracking_1"></s' + 'cript>')</script>
+<noscript>
+    <iframe src="https://view.atdmt.com/iaction/cntwir_ABSPSPageLoadTracking_1" width="1" height="1" frameborder="0"
+            scrolling="No" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0"></iframe>
+</noscript>
+<!-- End Atlas Tag -->
+
+<!-- Begin WebTrends/eDM Tag -->
+
+<script type="text/javascript">
+    QueryString = function () {
+        var query_string = {};
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+
+            pair[0] = decodeURIComponent(pair[0]);
+            pair[1] = decodeURIComponent(pair[1]);
+            if (typeof query_string[pair[0]] === "undefined") {
+                query_string[pair[0]] = pair[1];
+                // If second entry with this name
+            } else if (typeof query_string[pair[0]] === "string") {
+                var arr = [query_string[pair[0]], pair[1]];
+                query_string[pair[0]] = arr;
+                // If third or later entry with this name
+            } else {
+                query_string[pair[0]].push(pair[1]);
+            }
+        }
+        return query_string;
+    }();
+</script>
+
+<script type="text/javascript">
+    if (typeof(DCSext) == "undefined") {
+        var DCSext = new Object();
+    }
+    DCSext.wtATTPage = attPage; //Do not edit. Defined in head section.
+    DCSext.wtATTCampaign = attCampaign; //Do not edit. Defined in head section.
+    DCSext.wtATTECampaignID = QueryString.ecampaign;
+</script>
+<script src="http://www.att.com/webtrends/scripts/dcs_tag.js" type="text/javascript"></script>
+
+<!-- End WebTrends/eDM Tag -->
+
+<!-- GOOGLE CLICK TRACKING -->
+<script>
+    function trackGoogle() {
+        var rmktEvent = 'formSubmit';
+        window.google_trackConversion({
+                                          google_conversion_id: 986841816,
+                                          google_custom_params: {
+                                              'event': rmktEvent,
+                                              'attPage': attPage,
+                                              'attCampaign': attCampaign
+                                          },
+                                          google_remarketing_only: true
+                                      });
+    }
+</script>
+<!-- /GOOGLE CLICK TRACKING -->
+
+<!-- GOOGLE PAGE LOAD -->
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion_async.js"
+        charset="utf-8"></script>
+
+<script>
+    var google_tag_params = {
+        'event': 'pageLoad',
+        'attPage': attPage,
+        'attCampaign': attCampaign
+    }
+</script>
+
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 986841816;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+</script>
+<div style="display:none">
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+</div>
+<noscript>
+    <div style="display:inline;"><img height="1" width="1" style="border-style:none;" alt=""
+                                      src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/986841816/?value=0&amp;guid=ON&amp;script=0">
+    </div>
+</noscript>
+<!-- /GOOGLE PAGE LOAD -->
+
+<!-- End Eloqua scripts -->
+
+</body>
+</html>

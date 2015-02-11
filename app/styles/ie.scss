@@ -1,0 +1,56 @@
+body {
+  background: #333333;
+}
+
+@media screen and (min-width:0\0) {
+  .main {
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+
+
+    .input::-ms-clear {
+      display: none;
+    }
+    
+    input:-ms-input-placeholder {
+      color: gray;
+    }
+
+    .wrapper {
+
+      .button > .left .rotate-wrapper {
+        height: 80px;
+      }
+    }
+  }
+
+  .button > .left .rotate-wrapper .rotate {
+    -ms-transform-origin: center bottom;
+    -ms-transform: rotate(-90deg);
+  }
+
+  .wrapper .shell-1 {
+    height: 100%;
+  }
+
+  .wrapper .shell-wrapper.choose-game .button .left .pts-wrapper .pts {
+    -ms-transform-origin: center bottom;
+    -ms-transform: rotate(-90deg);
+  }
+
+  .wrapper .shell-wrapper.game-process .shell-1 .content .progress-bar > .item .progress-wrapper .item.back {
+    background-color: #51a2cb;
+    -ms-transform: skew(-30deg, 0deg);
+    z-index: 0;
+  }
+
+  .wrapper .shell-wrapper.game-process .shell-1 .content .progress-bar > .item .fixed {
+    position: relative;
+  }
+
+  .wrapper .shell-wrapper.choose-game .button .right .img {
+    max-width: 210px !important;
+  }
+}

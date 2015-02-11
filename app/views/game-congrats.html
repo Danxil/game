@@ -1,0 +1,49 @@
+<div class="shell-wrapper game-congrats finish-game sun" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c">
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'"></div>
+            <!-- End menu button -->
+            <p class="label ff-2 fs-58 color-1 bold italic ta-c">Congrats!</p>
+            <div class="img-wrapper">
+                <img class="reward" data-ng-src="{{gameResult.achievements[0].icon}}" alt=""/>
+            </div>
+            <p class="text fs-33 color-1">Congratulations! You just earned <span class="bold ff-1">{{gameResult.achievements[0].title}}</span> badge.</p>
+            <div class="social">
+                <p class="fs-25 color-1">Share it:<br></p>
+                <ul class="list">
+                    <li class="item">
+                        <a class="link" href="" data-ng-click="postGameResult('fb', {badge: true, image: gameResult.achievements[0].icon})">
+                            <img class="img" src="/images/fb-2.png">
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="" data-ng-click="postGameResult('tw', {badge: true, image: gameResult.achievements[0].icon})">
+                            <img class="img" src="/images/tw-2.png">
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="" data-ng-click="postGameResult('in', {badge: true, image: gameResult.achievements[0].icon})">
+                            <img class="img" src="/images/in-2.png">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="button-wrapper">
+                <a class="submit button ff-1 fs-39 bold color-1 ta-c" data-ng-class="{disabled: registrationData.error}" data-ng-click="goToChooseCategory()">
+                    <span class="content">Play a new game</span>
+                </a>
+                <a class="additional-link ff-1 color-2 bold fs-25 underline-none" data-ng-click="goToInviteFriends()" href="">
+                    <br>
+                    Invite colleagues
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

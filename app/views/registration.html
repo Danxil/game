@@ -1,0 +1,116 @@
+    <div class="shell-wrapper registration" data-ie-content-height>
+        <div class="shell shell-1"><b class="landscape-line"></b>
+            <b class="second-bg"></b>
+            <div class="content">
+                <h1 class="ff-2 lh-2 fs-39 bold italic color-1">
+                    Set up your profile and create a game nickname.
+                </h1>
+                <p class="main-text ff-1 fs-20 color-1 ta-l">
+                    <span class="color-8">*</span>Required fields
+                </p>
+                <form class="main-form" name="registrationForm" data-error-autofocus novalidate data-ie-placeholders>
+                    <input type="hidden" data-ng-model="registrationData.data.invitation_code" />
+                    <input id="elqCustomerGUID" name="elqCustomerGUID" type="hidden" value="" data-ng-model="registrationData.data.elqCustomerGUID" />
+                    <div id="dv_Name">
+                        <div class="line">
+                            <label class="color-3 ff-1 fs-21 bold" data-ng-class="{show: registrationData.data.first_name}">First name</label>
+                            <div class="input-wrapper required first-name" data-ng-class="{error: registrationData.error.first_name != undefined}">
+                                <input class="input fs-32 color-4" data-ng-model="registrationData.data.first_name" data-ng-blur="checkRegistrationFields('first_name');" name="first_name" placeholder="First name" required id="firstName">
+                                <span class="hint-required" data-ng-show="!registrationData.data.first_name">*</span>
+                                <p class="hint-error fs-32 color-1" data-ng-show="registrationData.error.first_name && registrationData.error.first_name.length">{{registrationData.error.first_name}}</p>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label class="color-3 ff-1 fs-21 bold" data-ng-class="{show: registrationData.data.last_name}">Last name</label>
+                            <div class="input-wrapper required last-name" data-ng-class="{error: registrationData.error.last_name != undefined}">
+                                <input class="input fs-32 color-4" data-ng-model="registrationData.data.last_name" data-ng-blur="checkRegistrationFields('last_name');" name="last_name" placeholder="Last name" required id="lastName">
+                                <span class="hint-required" data-ng-show="!registrationData.data.last_name">*</span>
+                                <p class="hint-error fs-32 color-1" data-ng-show="registrationData.error.last_name && registrationData.error.last_name.length">{{registrationData.error.last_name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line" id="dv_Company">
+                        <label class="color-3 ff-1 fs-21 bold" data-ng-class="{show: registrationData.data.company}">Company name</label>
+                        <div class="input-wrapper required company" data-ng-class="{error: registrationData.error.company != undefined}">
+                            <input class="input fs-32 color-4" data-ng-model="registrationData.data.company" data-ng-blur="checkRegistrationFields('company');" name="company" placeholder="Your Company's Name" required id="company">
+                            <span class="hint-required" data-ng-show="!registrationData.data.company">*</span>
+                            <p class="hint-error fs-32 color-1" data-ng-show="registrationData.error.company && registrationData.error.company.length">{{registrationData.error.company}}</p>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <label class="color-3 ff-1 fs-21 bold" data-ng-class="{show: registrationData.data.email}">Email</label>
+                        <div class="input-wrapper required email" data-ng-class="{error: registrationData.error.email != undefined}">
+                            <input class="input fs-32 color-4" data-ng-model="registrationData.data.email" data-ng-blur="checkRegistrationFields('email');" name="email" placeholder="Email" required id="emailAddress">
+                            <span class="hint-required" data-ng-show="!registrationData.data.email">*</span>
+                            <p class="hint-error fs-32 color-1" data-ng-show="registrationData.error.email && registrationData.error.email.length">{{registrationData.error.email}}</p>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <label class="color-3 ff-1 fs-21 bold" data-ng-class="{show: registrationData.data.username}">Game nickname</label>
+                        <div class="input-wrapper required username" data-ng-class="{error: registrationData.error.username != undefined}">
+                            <input class="input fs-32 color-4" data-ng-model="registrationData.data.username" data-ng-blur="checkRegistrationFields('username');" name="username" placeholder="Create a User Nickname" required>
+                            <span class="hint-required" data-ng-show="!registrationData.data.username">*</span>
+                            <p class="hint-error fs-32 color-1" data-ng-show="registrationData.error.username && registrationData.error.username.length">{{registrationData.error.username}}</p>
+                        </div>
+                        <p class="additional fs-24 ff-1 italic color-1 ta-r">(Nickname example - MobileMaverick)</p>
+                    </div>
+                    <div class="line">
+                        <label class="color-3 ff-1 fs-21 bold" data-ng-class="{show: registrationData.data.password}">Game password</label>
+                        <div class="input-wrapper required password" data-ng-class="{error: registrationData.error.password != undefined}">
+                            <input class="input fs-32 color-4" data-ng-model="registrationData.data.password" data-ng-blur="checkRegistrationFields('password');" name="password" placeholder="Create a Game Password" required>
+                            <span class="hint-required" data-ng-show="!registrationData.data.password">*</span>
+                            <p class="hint-error fs-32 color-1" data-ng-show="registrationData.error.password && registrationData.error.password.length">{{registrationData.error.password}}</p>
+                        </div>
+                        <p class="additional fs-24 ff-1 italic color-1 ta-r">(Password recommendation - 7 character min; 1 number, 1 letter)</p>
+                    </div>
+                    <div class="line">
+                        <div class="avatar-choose">
+                            <h1 class="page-title ff-2 lh-2 fs-39 bold italic color-1">Pick your Avatar</h1>
+                            <ul class="tabs ta-c">
+                                <li class="item" data-ng-repeat="(gender, avatars) in avatarsObj">
+                                    <a class="link fs-24 ff-1 color-2 bold" data-ng-class="{active: selectedGender == gender}" data-ng-click="chooseGender(gender)">{{gender == 0 ? 'Male' : 'Female'}}</a>
+                                </li>
+                            </ul>
+                            <div class="list swiper-container" data-ng-repeat="(gender, avatars) in avatarsObj" data-ng-if="selectedGender == gender">
+                                <div class="swiper-wrapper">
+                                    <div class="item swiper-slide" data-ng-repeat="item in avatars" data-choose-avatar-swiper data-choose-avatar-swiper-ctrl="avatarSwiperCtrl[gender]">
+                                        <a class="link" data-ng-click="" href="" ng-style="{'background-color': item.bg}">
+                                            <img class="img" data-ng-src="{{item.image}}" alt=""/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line last">
+                        <div class="input-wrapper required receive-notification">
+                            <input class="input color-4" data-ng-init="registrationData.data.receive_notification = true;" data-ng-model="registrationData.data.receive_notification" name="remember" type="checkbox" data-uniform required data-ng-click="checkRegistrationFields('receive_notification');" checked="checked">
+                        </div>
+                        <label class="label color-1 fs-28 ff-1">I agree to the <a class="additional-link ff-1 bold color-2 fs-25 underline-none" href="" data-ng-click="openNote('legal')">Terms and Conditions</a> of The Great Mobile Challenge</label>
+                        <div class="input-wrapper required receive-notification" style="display:block">
+                            <p class="hint-error fs-32 color-1" data-ng-show="registrationData.error.receive_notification">You may not join The Great Mobile Challenge without agreeing to the terms and conditions.</p>
+                        </div>
+                    </div>
+                    <div class="button-wrapper">
+                        <a class="submit button ff-1 fs-39 bold color-1 ta-c login" data-ng-class="{disabled: registrationData.error || !registrationData.data.receive_notification}" data-ng-click="registrationSubmit()">
+                            <span class="content">Play</span>
+                        </a>
+                        <div class="additional-wrapper ta-l">
+                            <p class="fs-24 color-1">
+                                We are committed to protecting 
+                                <a class="additional-link ff-1 bold color-2 fs-25 underline-none" href="http://www.att.com/gen/privacy-policy?pid=2506" target="_blank">your privacy</a>.
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="note show-animate" data-ng-show="note" data-scroll-note>
+                <div class="close-wrapper ta-r">
+                    <a class="close fs-25 color-9" href="" data-ng-click="closeNote()">Close <span class="icon bold fs-35">&#10006;</span></a>
+                </div>
+                <p class="text fs-22 color-17" data-ng-bind-html="note.text"></p>
+            </div>
+        </div>
+        <div class="shell shell-2"><b class="menu-bg"></b>
+        </div>
+    </div>

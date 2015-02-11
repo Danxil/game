@@ -1,0 +1,37 @@
+<div class="shell-wrapper challenge-sent" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c">
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'"></div>
+            <!-- End menu button -->
+            <p class="label ff-2 fs-58 color-1 bold italic ta-c">Nice job!</p>
+            <p class="title fs-33 color-1 ff-1 bold" data-ng-show="finishGameObj.gameType == 0">
+                You answered {{finishGameObj.total.correct_answers}} questions correctly in {{finishGameObj.total.game_time}} seconds!
+            </p>
+            <p class="title fs-33 color-1 ff-1 bold" data-ng-show="finishGameObj.gameType == 1">
+                You found {{finishGameObj.total.correct_answers}} words in {{finishGameObj.total.game_time}} seconds!
+            </p>
+            <p class="title fs-30 color-1">Your challenge has been sent to:</p>
+            <p class="fs-40 color-1">{{opponent.username}}</p>
+            <div class="img-wrapper">
+                <div class="avatar" ng-style="{'background-color': opponent.avatar_bg}">
+                    <img class="img" data-ng-src="{{opponent.avatar}}" alt="">
+                </div>
+            </div>
+            <div class="button-wrapper">
+                <a class="submit button ff-1 fs-39 bold color-1 ta-c" data-ng-class="{disabled: registrationData.error}" data-ng-click="goToChooseCategory()">
+                    <span class="content">Play a new game</span>
+                </a>
+                <div class="additional-wrapper ta-c">
+                    <a class="additional-link ff-1 bold color-2 fs-25 underline-none" href="" data-ng-click="goToInviteFriends()">Invite colleagues.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

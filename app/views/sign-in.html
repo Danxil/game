@@ -1,0 +1,65 @@
+    <div class="shell-wrapper lander" data-ie-content-height>
+        <div class="shell shell-1"><b class="landscape-line"></b>
+            <b class="second-bg"></b>
+            <div class="content">
+                <img class="logo" alt="" src="/images/logo.png">
+                <div class="social">
+                    <ul class="list">
+                        <li class="item">
+                            <a class="link" data-ng-click="shareLink('fb')">
+                                <img class="img" src="/images/fb.png">
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a class="link" data-ng-click="shareLink('tw')">
+                                <img class="img" src="/images/tw.png">
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a class="link" data-ng-click="shareLink('in')">
+                                <img class="img" src="/images/in.png">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <h1 class="page-title ff-2 lh-2 fs-58 bold italic color-1">
+                    The Great
+                    <br>
+                    Mobile Challenge!
+                </h1>
+                <p class="main-text ff-1 fs-32 color-1">
+                    Welcome back!
+                </p>
+                <form class="main-form" name="signInForm" novalidate>
+                    <div class="line">
+                        <label class="color-3 ff-1 fs-21 bold">Email</label>
+                        <div class="input-wrapper" data-ng-class="{error: signInError}">
+                            <input type="email" class="input fs-32 color-4" data-ng-model="signInData.username" name="username" required>
+                            <p class="hint-error fs-32 color-1" data-ng-show="signInError">Your email or password is incorrect. Please try again.</p>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <label class="color-3 ff-1 fs-21 bold">Game password</label>
+                        <div class="input-wrapper" data-ng-class="{error: signInError}">
+                            <input class="input fs-32 color-4" data-ng-model="signInData.password" name="pass" type="password" required>
+                        </div>
+                    </div>
+                    <div class="line last">
+                        <div class="input-wrapper">
+                            <input class="input color-4" data-ng-model="signInData.remember" data-ng-init="signInData.remember = true;" type="checkbox" checked data-uniform>
+                        </div>
+                        <label class="label color-1 fs-28 ff-1">Remember me</label>
+                    </div>
+                    <div class="button-wrapper">-
+                        <a type="submit" class="button ff-1 fs-39 bold color-1 ta-c" data-ng-click="signInSubmit()">
+                            <span class="content">Sign in and play</span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="bottom-page" data-bottom-page-style ng-include="'/views/copyright.html'"></div>
+        </div>
+        <div class="shell shell-2"><b class="menu-bg"></b>
+        </div>
+    </div>

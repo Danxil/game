@@ -1,0 +1,66 @@
+<div class="shell-wrapper profile other-profile sun" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c">
+
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'"></div>
+            <!-- End menu button -->
+
+            <div class="user" data-ng-class="{'top-1': otherProfile.position == 1,'top-10': otherProfile.position <= 10}">
+                <div class="avatar" ng-style="{'background-color': otherProfile.avatar_bg}">
+                    <img class="img" data-ng-src="{{otherProfile.avatar}}" alt="">
+                </div>
+            </div>
+            <p class="label ff-2 fs-39 color-1 bold italic ta-c">{{otherProfile.username}}</p>
+            <div class="button-wrapper">
+                <a class="button ff-1 fs-39 bold color-1 ta-c" data-ng-click="chooseOpponent(otherProfile)" data-ng-class="{disabled: gameProcess || (choosenOpponent.pk == otherProfile.pk && choosenGame)}" hover="">
+                    <span class="content">Challenge!</span>
+                </a>
+            </div>
+            <ul class="stat">
+                <li class="line">
+                    <p class="item color-1 ov-h">
+                        <span class="left fs-25 fl-l">Leaderboard position:</span>
+                        <span class="right fs-25 ff-1 bold fl-r">{{otherProfile.position}}</span>
+                    </p>
+                </li>
+                <li class="line">
+                    <p class="item color-1 ov-h">
+                        <span class="left fs-25 fl-l">Total points earned:</span>
+                        <span class="right fs-25 ff-1 bold fl-r">{{otherProfile.score}}</span>
+                    </p>
+                </li>
+                <li class="line">
+                    <p class="item color-1 ov-h">
+                        <span class="left fs-25 fl-l">Total games played:</span>
+                        <span class="right fs-25 ff-1 bold fl-r">{{otherProfile.games_count}}</span>
+                    </p>
+                </li>
+                <li class="line">
+                    <p class="item color-1 ov-h">
+                        <span class="left fs-25 fl-l">Win ratio:</span>
+                        <span class="right fs-25 ff-1 bold fl-r">{{otherProfile.win_ratio}}%</span>
+                    </p>
+                </li>
+            </ul>
+            <p class="label-2 ff-2 fs-30 color-1 bold italic ta-c" ng-class="{hide: otherProfile.achievements.length == 0}">{{otherProfile.achievements.length}} of {{achievements.length}} badges earned!</p>
+            <ul class="list-1 ta-c">
+                <li class="item" data-ng-repeat="achievement in otherProfile.achievements">
+                    <div class="case">
+                        <div class="img-wrapper">
+                            <img class="img" data-ng-src="{{achievement.icon}}" alt=""/>
+                        </div>
+                        <p class="label ta-c fs-20 color-3 ff-1 bold">{{achievement.title}}</p>
+                    </div>
+                </li>
+                <li class="item" data-ng-if="otherProfile.achievements.length % 3 != 0 && otherProfile.achievements.length != 1"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

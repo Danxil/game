@@ -1,0 +1,92 @@
+<div class="shell-wrapper lander logged" ng-class="{'finish-game': !badgeLander && lastResult && lastResultData.won, 'won-logged': !badgeLander && lastResult && lastResultData.won}" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content">
+
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'"></div>
+            <!-- End menu button -->
+
+            <img class="logo" alt="" src="../images/logo.png">
+            <div class="clear"></div>
+            <h1 class="page-title ff-2 lh-2 fs-58 bold italic color-1">
+                The Great
+                <br>
+                Mobile Challenge!
+            </h1>
+            <div ng-if="!badgeLander && !lastResult">
+                <p class="main-text ff-1 fs-32 color-1">
+                    Welcome back, <span class="ff-1 bold">{{ userData.username }}</span>!
+                    You’re in {{ userData.printUserPosition() }} place and have earned {{ userData.achievements.length }} badges.<br />
+                    <a class="color-2 ff-1 bold" data-ng-click="goToMyProfile()" href="">View your profile</a>
+                </p>
+                <div class="user ta-c" data-ng-class="{'top-1': userData.position == 1,'top-10': userData.position <= 10}">
+                    <div class="avatar ta-c" ng-style="{'background-color': userData.avatar_bg}">
+                        <img class="img" data-ng-src="{{userData.avatar}}" alt="">
+                    </div>
+                    <ng-include src="'/views/avatar_stripe.html'"></ng-include>
+                </div>
+            </div>
+            <div ng-if="badgeLander">
+                <p class="main-text ff-1 fs-32 color-1">
+                    Welcome back, <span class="ff-1 bold">{{ userData.username }}</span>! You just earned {{ notifications.badge.title }}, way to go!<br />
+                    <a class="color-2 ff-1 bold link" data-ng-click="goToMyProfile()" href="">View your profile</a>
+                </p>
+                <div class="badge ta-c">
+                    <div class="img-wrapper">
+                        <div class="center">
+                            <img class="img" data-ng-src="../images/sun-3.png" alt=""/>
+                        </div>
+                        <img class="reward" data-ng-src="{{ notifications.badge.icon }}" alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="!badgeLander && lastResult">
+                <div ng-if="!lastResultData.won">
+                    <p class="main-text ff-1 fs-32 color-1">
+                        {{ userData.username }}, you lost your last game, but you'll do better next time.<br />
+                        Check out <a class="color-2 ff-1 bold" href="{{ lastResultData.asset_link }}" target="_blank">{{ lastResultData.asset_title }}</a>
+                    </p>
+                    <div class="ta-c">
+                        <div class="img-wrapper">
+                            <div class="avatar" ng-style="{'background-color': userData.avatar_bg}">
+                                <img class="img" data-ng-src="{{userData.avatar}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="lastResultData.won">
+                    <p class="main-text ff-1 fs-32 color-1">
+                        You won your last game and landed <span class="ff-1 bold">{{ lastResultData.points }} points!</span>
+                        You're now in <span class="ff-1 bold">{{ userData.printUserPosition() }} place</span> rockstar.
+                    </p>
+                    <div class="ta-c won-logged">
+                        <div class="img-wrapper">
+                            <div class="avatar" ng-style="{'background-color': userData.avatar_bg}">
+                                <img class="img" data-ng-src="{{userData.avatar}}" alt="">
+                            </div>
+                            <img class="nimb" src="../images/nimb.png" alt=""/>
+                            <div class="center">
+                                <img class="img" data-ng-src="../images/sun-3.png" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-wrapper">
+                <a class="button ff-1 fs-39 bold color-1 ta-c" data-ng-click="goToChooseCategory()">
+                    <span class="content">Play a game</span>
+                </a>
+                <div class="additional-wrapper ta-c">
+                    <a class="additional-link ff-1 bold color-2 fs-25 underline-none" href="" data-ng-click="goToInviteFriends()">Invite colleagues</a>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-page" data-bottom-page-style ng-include="'/views/copyright.html'"></div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

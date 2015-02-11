@@ -1,0 +1,57 @@
+.main.leaderboard-single {
+  .fs-15 {
+    font-size: 15px;
+  }
+
+  .fs-20 {
+    font-size: 20px;
+  }
+
+  .fs-24 {
+    font-size: 24px;
+  }
+
+  .fs-39 {
+    font-size: 39px;
+  }
+
+  .wrapper {
+    .shell-wrapper {
+      &.leaderboard {
+        .shell-1 > .content {
+          .head {
+            padding: 40px 0px 75px;
+            p {
+              text-align: center;
+            }
+            .label {
+              margin: 0;
+            }
+            .text {
+              a {
+                color: #fff;
+              }
+            }
+          }
+          .select-list .list .item .button > .content .username {
+            font-size: 25px;
+          }
+        }
+      }
+      &.sky {
+        .shell-1 {
+          > b.second-bg {
+            position: absolute;
+            width: inherit !important;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .wrapper.app .shell-wrapper {
+      width: 100%;
+    }
+  }
+}

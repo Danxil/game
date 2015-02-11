@@ -1,0 +1,11 @@
+<div class="status-line" ng-if="userData.position <= 10">
+    <span class="tape left"></span>
+    <div class="line" ng-class="{line10: userData.position > 1}">
+        <img class="star" src="../images/star.png" alt="" />
+        <img class="star" src="../images/star.png" alt="" />
+        <span class="value fs-22 bold color-1 ff-1">{{userData.position == 1 ? 1 : 'Top 10'}}</span>
+        <img class="star" src="../images/star.png" alt="" />
+        <img class="star" src="../images/star.png" alt="" />
+    </div>
+    <span class="tape right"></span>
+</div>

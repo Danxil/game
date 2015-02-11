@@ -1,0 +1,41 @@
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes cloud {
+  0% {
+    left: 0%;
+
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes countdown {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(.5);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

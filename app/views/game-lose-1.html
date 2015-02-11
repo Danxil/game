@@ -1,0 +1,23 @@
+<div class="shell-wrapper game-lose-1 finish-game" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content ta-c">
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'"></div>
+            <!-- End menu button -->
+            <p class="label ff-2 fs-58 color-1 bold italic ta-c">Oh no</p>
+            <p class="title fs-33 color-1">You missed out on {{gameResult.points}} points.</p>
+            <div class="img-wrapper">
+                <div class="avatar" ng-style="{'background-color': userData.avatar_bg}">
+                    <img class="img" data-ng-src="{{userData.avatar}}" alt="">
+                </div>
+                <img class="cloud cloud-animate" src="../images/cloud.png" alt=""/>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="shell-wrapper note" data-ie-content-height>
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content">
+
+            <!-- Right menu button -->
+            <div class="control-panel" ng-include="'/views/menu-button.html'"></div>
+            <!-- End menu button -->
+
+            <div class="note-content">
+                <p class="text fs-22 color-17" data-ng-bind-html="note.text"></p>
+                <p class="copyright fs-22 color-17" data-ng-bind-html="note.copyright"></p>
+            </div>
+        </div>
+    </div>
+    <div class="shell shell-2"><b class="menu-bg"></b>
+        <div class="content">
+            <ul class="list" ng-include="'/views/right-menu.html'"></ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="shell-wrapper leaderboard sky">
+    <div class="shell shell-1"><b class="landscape-line"></b>
+        <b class="second-bg"></b>
+        <div class="content">
+            <div class="head">
+                <p class="label ff-2 fs-44 color-1 bold italic ta-c">The Great Mobile Challenge Leaderboard</p>
+                <p class="text fs-24 color-1 ta-c">Go to <a href="http://thegreatmobilechallenge.com" target="_blank">www.thegreatmobilechallenge.com</a> on any device and play</p>
+            </div>
+            <div class="select-list">
+                <ul class="tabs ta-c">
+                    <li class="item">
+                        <a class="link fs-20 ff-1 color-9" data-ng-class="{active: activeList == 0}" data-ng-click="getTop10();">Top 10</a>
+                    </li>
+                    <li class="item">
+                        <a class="link fs-20 ff-1 color-9" data-ng-class="{active: activeList == 1}" data-ng-click="getFrequentPlayers();">Frequent Players</a>
+                    </li>
+                </ul>
+                <ul class="list" data-infinite-scroll="moreUsers();">
+                    <li class="item repeat-animate" data-ng-repeat="profile in leaderboard" data-ng-if="avatar.type == selectedGender">
+                        <a class="button color-1 bold ff-1" href="">
+                            <div class="left">
+                                <div class="rotate-wrapper">
+                                    <span data-ng-class="'rotate ff-1 fs-20 color-1 ws-nw length-' + ($index + 1 + '').length">
+                                        <span class="ff-1 bold">{{$index + 1}}</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="content ta-l">
+                                <p class="username fs-30">{{profile.username}}</p>
+                            </div>
+                            <div class="right ta-c" b="{{ profile.position }}" data-ng-class="{'type-1': profile.position != 1 && profile.position <= 3, 'type-2': profile.position > 3}">
+                                <div class="center">
+                                    <img class="img" data-ng-src="{{profile.avatar}}" ng-style="" alt="">
+                                </div>
+                                <div class="avatar-wrapper">
+                                    <div class="avatar" ng-style="{'background-color': profile.avatar_bg}"></div>
+                                </div>
+                                <div class="status-line type-2" data-ng-hide="profile.position > 10">
+                                    <img class="tape left" data-ng-src="{{profile.position == 1 && '../images/tape-l.png' || '../images/tape-l-2.png'}}" alt="">
+                                    <div class="line">
+                                        <img class="star" src="../images/star.png" alt="">
+                                        <img class="star" src="../images/star.png" alt="">
+                                        <span class="value fs-15 bold color-1 ff-1">{{profile.position == 1 ? 1 : 'Top 10'}}</span>
+                                        <img class="star" src="../images/star.png" alt="">
+                                        <img class="star" src="../images/star.png" alt="">
+                                    </div>
+                                    <img class="tape right" data-ng-src="{{profile.position == 1 && '../images/tape-r.png' || '../images/tape-r-2.png'}}" alt="">
+                                </div>
+                            </div>
+                        </a>
+                        <!--div class="custom-link-wrapper ta-c">
+                            <a class="color-9 fs-18 bold ff-1" href="" data-ng-click="goToOtherProfile(profile)">View profile</a>
+                        </div-->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
